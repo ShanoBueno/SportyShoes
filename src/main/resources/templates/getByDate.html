@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#" th:href="@{/admin}">Sporty Shoes Home</a>
+			</div>
+		</div>
+		<div id="navbar" class="collapse navbar-collapse">
+		<ul class="nav navbar-nav">
+			<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+		</ul>
+		
+		</div>
+	</nav>
+	<ul>
+
+	</ul>
+	<table border="1">
+		<tr>
+			<th>Name</th>
+			<th>Price</th>
+			<th>Shipping</th>
+			<th>Date</th>
+		</tr>
+		
+		<tr th:each="purchaseOrder: ${purchaseOrder}" >
+			<td th:text="${purchaseOrder.product}" />
+			<td th:text="${purchaseOrder.price}" />
+			<td th:text="${purchaseOrder.shipping}" />
+			<td th:text="${purchaseOrder.orderDate}" />
+		</tr>
+	</table>
+</body>
+</html>
